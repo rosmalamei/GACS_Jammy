@@ -6,7 +6,7 @@ This is autoinstall GenieACS For ubuntu version 22.04 (Jammy)
 sudo su
 ```
 ```
-wget https://github.com/rosmalamei/GACS_Jammy.git
+wget https://raw.githubusercontent.com/rosmalamei/JammyACS/main/GACS-Jammy.sh
 ```
 ```
 chmod +x GACS-Jammy.sh
