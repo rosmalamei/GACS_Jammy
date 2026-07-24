@@ -15,14 +15,18 @@ apt-get install mongodb-org -y (jika diperlukan)
 systemctl enable mongod
 systemctl start mongod
 
-cd /opt
-git clone https://github.com/rosmalamei/genieacs.git
-cd genieacs
-npm install
-npm run build
-useradd --system --no-create-home --user-group genieacs   
-mkdir -p /opt/genieacs/ext     
-chown genieacs:genieacs /opt/genieacs/ext
+#GenieACS
+if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
+    echo -e "${GREEN}================== Menginstall genieACS CWMP, FS, NBI, UI ==================${NC}"
+    cd
+    cd /opt
+    git clone https://github.com/rosmalamei/genieacs.git
+    cd genieacs
+    npm install
+    npm run build
+    useradd --system --no-create-home --user-group genieacs   
+    mkdir -p /opt/genieacs/ext     
+    chown genieacs:genieacs /opt/genieacs/ext
 #Isi data Genieacs.env    
     cat << EOF > /opt/genieacs/genieacs.env
 GENIEACS_CWMP_ACCESS_LOG_FILE=/var/log/genieacs/genieacs-cwmp-access.log
@@ -116,7 +120,11 @@ EOF
     cd
     rm -r GACS  
     echo -e "${GREEN}================== Sukses genieACS CWMP, FS, NBI, UI ==================${NC}"
-
+    
+    
+else
+    echo -e "${GREEN}============================================================================${NC}"
+    echo -e "${GREEN}=================== GenieACS sudah terinstall sebelumnya. ==================${NC}"
 fi
 
 #Sukses
@@ -133,4 +141,3 @@ if [ "$reboot_confirmation" = "y" ]; then
         reboot
     fi
 fi
-}
