@@ -62,10 +62,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Check Ubuntu version
-if [ "$(lsb_release -cs)" != "jammy" ]; then
-    echo -e "${RED}This script only supports Ubuntu 22.04 (Jammy)${NC}"
-    exit 1
-fi
+#if [ "$(lsb_release -cs)" != "jammy" ]; then
+#    echo -e "${RED}This script only supports Ubuntu 22.04 (Jammy)${NC}"
+#    exit 1
+#fi
 
 # Print banner
 print_banner
