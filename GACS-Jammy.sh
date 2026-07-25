@@ -11,7 +11,8 @@ apt-get update -y
 apt-get install mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8 -y
 apt-get update -y
 apt --fix-broken install -y
-apt-get install mongodb-org -y (jika diperlukan)
+apt-get install mongodb-org -y
+systemctl daemon-reload
 systemctl enable mongod
 systemctl start mongod
 
