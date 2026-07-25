@@ -1,6 +1,6 @@
 apt-get update -y
 apt install curl build-essential git nano -y
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 apt-get install -y nodejs
 
 wget http://ports.ubuntu.com/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_arm64.deb
@@ -11,7 +11,7 @@ apt-get update -y
 apt-get install mongodb-org=4.4.8 mongodb-org-server=4.4.8 mongodb-org-shell=4.4.8 mongodb-org-mongos=4.4.8 mongodb-org-tools=4.4.8 -y
 apt-get update -y
 apt --fix-broken install -y
-apt-get install mongodb-org -y
+#apt-get install mongodb-org -y
 systemctl daemon-reload
 systemctl enable mongod
 systemctl start mongod
@@ -23,8 +23,8 @@ if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     cd /opt
     git clone https://github.com/rosmalamei/genieacs.git
     cd genieacs
-    npm install
-    npm run build
+    npm install -g npm@12.0.1
+    #npm run build
     useradd --system --no-create-home --user-group genieacs   
     mkdir -p /opt/genieacs/ext     
     chown genieacs:genieacs /opt/genieacs/ext
